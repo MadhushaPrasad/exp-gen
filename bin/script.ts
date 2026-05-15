@@ -57,7 +57,6 @@ async function main() {
   );
 
   const project = await p.group<ProjectConfig>(
-
     {
       name: () =>
         safePrompt(
