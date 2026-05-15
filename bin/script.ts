@@ -151,10 +151,7 @@ async function main() {
   );
 
   //Stop if user selected a "coming soon" DB
-  const comingSoonDBs: ProjectConfig["db"][] = [
-    "mysql",
-    "sqlite"
-  ];
+  const comingSoonDBs: ProjectConfig["db"][] = ["mysql", "sqlite"];
 
   if (comingSoonDBs.includes(project.db)) {
     p.cancel(
