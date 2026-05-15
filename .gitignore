@@ -137,3 +137,6 @@ src/templates/**/*/.env
 src/templates/**/*/node_modules
 src/templates/**/*/package-lock.json
 package-config
+
+
+.vscode
