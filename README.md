@@ -74,7 +74,7 @@ We love open source! `exp-gen` is a community-driven project, and we welcome con
 
 ### How to contribute
 
-1. **Add Database Templates:** We are looking for contributors to help build out the `MySQL`, `PostgreSQL`, and `SQLite` templates in the `src/templates` folder.
+1. **Add Database Templates:** We are looking for contributors to help build out the `PostgreSQL`, and `SQLite` templates in the `src/templates` folder.
 2. **Report Bugs:** Found a glitch? Open an [issue](https://github.com/Open-Core-Lab/exp-gen/issues).
 3. **Feature Requests:** Have an idea for a new feature? Let us know!
 
