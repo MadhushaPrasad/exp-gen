@@ -4,24 +4,30 @@ import bcrypt from "bcryptjs";
 import { successResponse, errorResponse } from "../utils/response.js";
 import * as userRepo from "../repositories/user.repository.js";
 
-// Login endpoint
 export const login = asyncHandler(async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    // Find user
+    if (!email || !password) {
+      return res
+        .status(400)
+        .json(errorResponse({ status: 400 }, "Email and password required"));
+    }
+
     const user = await userRepo.getUserByEmail(email);
     if (!user) {
-      return res.status(401).json(errorResponse(null, "Invalid credentials"));
+      return res
+        .status(401)
+        .json(errorResponse({ status: 401 }, "Invalid credentials"));
     }
 
-    // Check password
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
-      return res.status(401).json(errorResponse(null, "Invalid credentials"));
+      return res
+        .status(401)
+        .json(errorResponse({ status: 401 }, "Invalid credentials"));
     }
 
-    // Generate token
     const token = jwt.sign(
       { id: user.id, email: user.email },
       process.env.JWT_SECRET,
@@ -38,16 +44,23 @@ export const signup = asyncHandler(async (req, res) => {
   try {
     const { name, email, password, age } = req.body;
 
-    // Check if user already exists
-    const existingUser = await userRepo.getUserByEmail(email);
-    if (existingUser) {
-      return res.status(400).json(errorResponse(null, "User already exists"));
+    if (!name || !email || !password) {
+      return res
+        .status(400)
+        .json(
+          errorResponse({ status: 400 }, "Name, email, and password required")
+        );
     }
 
-    // Hash password
+    const existingUser = await userRepo.getUserByEmail(email);
+    if (existingUser) {
+      return res
+        .status(400)
+        .json(errorResponse({ status: 400 }, "User already exists"));
+    }
+
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    // Create user
     const newUser = await userRepo.createUser({
       name,
       email,
@@ -55,7 +68,6 @@ export const signup = asyncHandler(async (req, res) => {
       age: age || 0,
     });
 
-    // Generate token
     const token = jwt.sign(
       { id: newUser.id, email: newUser.email },
       process.env.JWT_SECRET,
@@ -66,6 +78,6 @@ export const signup = asyncHandler(async (req, res) => {
       .status(201)
       .json(successResponse({ token, user: newUser }, "Signup successful"));
   } catch (error) {
-    res.status(500).json(errorResponse(error, "Login failed"));
+    res.status(500).json(errorResponse(error, "Signup failed"));
   }
 });

@@ -25,18 +25,22 @@ export const getUserByEmail = async (email) => {
 
 export const createUser = async (data) => {
   const { name, email, password, age = 0 } = data;
-  const result = await query(
+  const insertResult = await query(
     "INSERT INTO users (name, email, password, age, created_at, updated_at) VALUES (?, ?, ?, ?, NOW(), NOW())",
     [name, email, password, age]
   );
-  const insertId = result.insertId || result[0]?.insertId;
-  if (!insertId) return null;
-  return await getUserById(insertId);
+
+  if (!insertResult || !insertResult.insertId) {
+    throw new Error("Failed to create user - no insert ID returned");
+  }
+
+  return await getUserById(insertResult.insertId);
 };
 
 export const updateUser = async (id, data) => {
   const fields = [];
   const params = [];
+
   if (data.name !== undefined) {
     fields.push("name = ?");
     params.push(data.name);
@@ -53,19 +57,28 @@ export const updateUser = async (id, data) => {
     fields.push("age = ?");
     params.push(data.age);
   }
-  if (fields.length === 0) return await getUserById(id);
+
+  if (fields.length === 0) {
+    return await getUserById(id);
+  }
 
   params.push(id);
-  await query(
+  const updateResult = await query(
     `UPDATE users SET ${fields.join(", ")}, updated_at = NOW() WHERE id = ?`,
     params
   );
+
+  if (!updateResult || updateResult.affectedRows === 0) {
+    return null;
+  }
+
   return await getUserById(id);
 };
 
 export const deleteUser = async (id) => {
   const user = await getUserById(id);
   if (!user) return null;
+
   await query("DELETE FROM users WHERE id = ?", [id]);
   return user;
 };
