@@ -35,8 +35,8 @@ Run `exp` in your terminal. The interactive CLI (powered by `@clack/prompts`) wi
 - **Project Name:** Enter your project folder name (e.g., `my-api`).
 - **Language:** Choose between **TypeScript** (Recommended) or **JavaScript**.
 - **Database:** Select your preferred database.
-- _Currently Supported:_ **MongoDB** (via Mongoose), **MySQL**, and **PostgreSQL** (only for JavaScript projects).
-- _Coming Soon:_ **PostgreSQL** (Prisma), and **SQLite**.
+- _Currently Supported:_ **MongoDB** (via Mongoose), **MySQL**, **SQLite**, and **PostgreSQL** (only for JavaScript projects).
+- _Coming Soon:_ **PostgreSQL** (Prisma).
 - **Install Dependencies:** Choose `Yes` to let the CLI run `npm install` for you automatically.
 
 ### 2. Navigate and Run
@@ -74,7 +74,7 @@ We love open source! `exp-gen` is a community-driven project, and we welcome con
 
 ### How to contribute
 
-1. **Add Database Templates:** We are looking for contributors to help build out the `PostgreSQL`, and `SQLite` templates in the `src/templates` folder.
+1. **Add Database Templates:** We are looking for contributors to help build out the `PostgreSQL (Prisma)`, templates in the `src/templates` folder.
 2. **Report Bugs:** Found a glitch? Open an [issue](https://github.com/Open-Core-Lab/exp-gen/issues).
 3. **Feature Requests:** Have an idea for a new feature? Let us know!
 
