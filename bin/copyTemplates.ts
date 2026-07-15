@@ -24,6 +24,7 @@ async function copyAssets() {
       { src: "LICENSE", dest: "LICENSE" },
       { src: "README.md", dest: "README.md" },
       { src: "package-config/package.json", dest: "package.json" },
+      { src: "bin/assets", dest: "bin/assets" },
     ];
 
     for (const file of filesToCopy) {

@@ -1,58 +1,109 @@
 # exp-gen 🚀
 
-**exp-gen** is a lightning-fast, interactive CLI tool designed to scaffold Express.js API projects in seconds. Whether you prefer **TypeScript** or **JavaScript**, `exp-gen` sets up your directory structure, configuration, and database boilerplate so you can start coding immediately.
+[![NPM version](https://img.shields.io/npm/v/@madhusha_99/exp-gen?color=2e1065&label=)](https://www.npmjs.com/package/@madhusha_99/exp-gen)
+
+**exp-gen** a lightning-fast, interactive CLI tool designed to scaffold **Express.js REST APIs** in seconds.
+
+Whether you're starting a project with **TypeScript** or **JavaScript**, `exp-gen` generates a clean layered architecture, configures your preferred database boilerplate so you can start coding immediately, and now includes a **built-in web-based Regex Simulator** to help you build and debug regular expressions visually.
 
 ---
 
-## 🚀 Quick Start
+## ✨ Features
 
-To use the generator anywhere on your system, install it globally via npm:
+- 🚀 Interactive CLI powered by `@clack/prompts`
+- ⚡ Scaffold Express.js APIs in seconds
+- 🟦 TypeScript support
+- 🟨 JavaScript support
+- 🗂 Professional layered architecture
+- 🍃 MongoDB (Mongoose)
+- 🐬 MySQL
+- 🪶 SQLite
+- 🐘 PostgreSQL (JavaScript projects)
+- 📦 Optional automatic dependency installation
+- 🔬 Built-in **Regex Simulator**
+- 🌐 Opens automatically in your browser
+- 🎨 Modern developer-friendly UI
+- 📖 Live regex explanation & validation
+
+---
+
+# 🚀 Installation
+
+Install globally using npm:
 
 ```bash
 npm install -g @madhusha_99/exp-gen
 ```
 
-Once installed, you can initialize a new project using any of the following commands:
+---
+
+# 🚀 Usage
+
+After installation you can launch the CLI using any of the following commands:
 
 ```bash
 exp
-# OR
+```
+
+or
+
+```bash
 gen
-# OR
+```
+
+or
+
+```bash
 express-draft
+```
+
+When the CLI starts you'll be greeted with an interactive menu.
+
+```
+🚀 Scaffold a new Express API
+
+🔬 Run Regex Simulator
 ```
 
 ---
 
-## 🛠 User Guide
+# 🚀 Scaffold Express API
 
-### 1. Initialize Project
+Choose **Scaffold a new Express API** and answer a few questions.
 
-Run `exp` in your terminal. The interactive CLI (powered by `@clack/prompts`) will guide you through the setup:
+The CLI will ask for:
 
-![exp-gen](https://github.com/user-attachments/assets/d2766261-519e-4485-aef4-53e1edaaa18a)
+- Project name
+- Language
+- Database
+- Install dependencies
 
-- **Project Name:** Enter your project folder name (e.g., `my-api`).
-- **Language:** Choose between **TypeScript** (Recommended) or **JavaScript**.
-- **Database:** Select your preferred database.
-- _Currently Supported:_ **MongoDB** (via Mongoose), **MySQL**, **SQLite**, and **PostgreSQL** (only for JavaScript projects).
-- _Coming Soon:_ **PostgreSQL** (Prisma).
-- **Install Dependencies:** Choose `Yes` to let the CLI run `npm install` for you automatically.
+Supported languages
 
-### 2. Navigate and Run
+- **TypeScript** *(Recommended for type safety)* – Currently available with **MongoDB (Mongoose)** and **No Database** templates. More database integrations will be added in future releases.
+- **JavaScript** – Full template support for all currently available databases, including **MongoDB (Mongoose)**, **MySQL (mysql2)**, **SQLite (sqlite3)**, **PostgreSQL (pg)**, and **No Database**.
 
-After the scaffolding is complete, follow the on-screen instructions:
+## 🗄️ Supported Databases
 
-```bash
-cd <your-project-name>
-npm run dev
-```
+| Database            | JavaScript | TypeScript | Driver / ORM | Status  |
+| ------------------- | :--------: | :--------: | ------------ | :-----: |
+| MongoDB             |     ✅      |     ✅      | Mongoose     | Stable  |
+| MySQL               |     ✅      |     ❌      | mysql2       | Stable  |
+| SQLite              |     ✅      |     ❌      | sqlite3      | Stable  |
+| PostgreSQL          |     ✅      |     ❌      | pg           | Stable  |
+| None (No Database)  |     ✅      |     ✅      | —            | Stable  |
+| Prisma (MongoDB)    |     🚧      |     🚧      | Prisma ORM   | Planned |
+| Prisma (MySQL)      |     🚧      |     🚧      | Prisma ORM   | Planned |
+| Prisma (PostgreSQL) |     🚧      |     🚧      | Prisma ORM   | Planned |
+| Prisma (SQLite)     |     🚧      |     🚧      | Prisma ORM   | Planned |
+
+#### Preview
+
+![Scaffold Express API Demo](./bin//assets/Scaffold.gif)
 
 ---
 
 ## 📁 Project Structure
-
-`exp-gen` scaffolds a professional **Layered Architecture**, ensuring your code remains scalable and maintainable as it grows:
 
 - **`configs/`**: Environment variables and database connection logic.
 - **`controllers/`**: Bridges the routes and the business logic; handles requests/responses.
@@ -66,32 +117,197 @@ npm run dev
 - **`utils/`**: Shared helper functions and utility classes.
 - **`app.ts`**: The application entry point.
 
+The generated architecture **follows a clean layered design making projects easier to maintain and scale.**
+
+---
+
+# 🔬 Regex Simulator
+
+Starting from **v1.4.0**, `exp-gen` includes a fully interactive **Regex Simulator**.
+
+Simply choose:
+
+```
+🔬 Run Regex Simulator
+```
+
+The CLI automatically starts a lightweight local server and opens the Regex Simulator in your default web browser.
+
+> ✅ **No additional dependencies are required.** The simulator is built into `exp-gen` and runs entirely on your local machine.
+
+#### Preview
+
+![Regex Simulator Demo](./bin//assets/Regex.gif)
+
+![Regex Simulator Web](./bin//assets/RegexWeb.png)
+
+---
+
+## Features in Regex Simulator
+
+- ⚡ Live regex matching
+- 📖 Regex rule explanations
+- 🎯 Capture group visualization
+- 🔍 Match position detection
+- 🚨 Friendly validation errors
+- 🧠 Beginner-friendly regex guidance
+- 🏷 Regex flag helper
+- 🌙 Modern dark developer UI
+- 🌐 Runs completely locally
+
+**Example**
+
+```regex
+(?<name>\w+)-(\d+)
+```
+
+**Input:**
+
+```
+hello-123
+world-456
+invalid-value
+```
+
+**Output:**
+
+```
+✓ Match 1
+hello-123
+
+Group 1:
+hello
+
+Group 2:
+123
+```
+
+**The simulator also explains regex tokens such as:**
+
+| Token       | Description         |
+| ----------- | ------------------- |
+| `\d`        | Digit               |
+| `\w`        | Word character      |
+| `.`         | Any character       |
+| `+`         | One or more         |
+| `*`         | Zero or more        |
+| `?`         | Optional            |
+| `^`         | Start of input      |
+| `$`         | End of input        |
+| `()`        | Capture group       |
+| `(?<name>)` | Named capture group |
+
+---
+
+# 🚀 Example Workflow
+
+```bash
+exp
+```
+
+```
+✔ What would you like to do?
+
+❯ 🚀 Scaffold a new Express API
+  🔬 Run Regex Simulator
+```
+
+or
+
+```
+✔ What would you like to do?
+
+  🚀 Scaffold a new Express API
+❯ 🔬 Run Regex Simulator
+```
+
+---
+
+# 📦 After Scaffolding
+
+Navigate into your project
+
+```bash
+cd my-project
+```
+
+If dependencies were installed
+
+```bash
+npm run dev
+```
+
+Otherwise
+
+```bash
+npm install
+npm run dev
+```
+
 ---
 
 ## 🤝 Contributing
 
-We love open source! `exp-gen` is a community-driven project, and we welcome contributions to make it better.
+**We love open source! `exp-gen` is a community-driven project, and we welcome contributions to make it better.**
 
-### How to contribute
+You can help by:
 
-1. **Add Database Templates:** We are looking for contributors to help build out the `PostgreSQL (Prisma)`, templates in the `src/templates` folder.
-2. **Report Bugs:** Found a glitch? Open an [issue](https://github.com/Open-Core-Lab/exp-gen/issues).
-3. **Feature Requests:** Have an idea for a new feature? Let us know!
+- Adding new database templates
+- Improving generated project templates
+- Improving the Regex Simulator
+- Reporting bugs
+- Suggesting new CLI features
 
-### Local Development Setup
+**Clone the project**
 
-If you want to work on the CLI itself:
+```bash
+git clone https://github.com/Open-Core-Lab/exp-gen.git
+```
 
-1. Clone the repo: `git clone https://github.com/Open-Core-Lab/exp-gen.git`
-2. Install dependencies: `npm install`
-3. Make your changes and submit a Pull Request!
+**Install dependencies**
+
+```bash
+npm install
+```
+
+**Run locally**
+
+```bash
+npm run dev
+```
 
 ---
 
-## 📄 License
+# 📋 Roadmap
+
+**Upcoming features include:**
+
+- **Prisma support**
+- **Docker template generation**
+- **JWT Authentication template**
+- **Swagger/OpenAPI generation**
+- **Testing templates (Vitest/Jest)**
+- **Redis integration**
+- **Prisma PostgreSQL template**
+- **Environment profile generator**
+- **More Regex Simulator utilities**
+
+---
+
+## ⭐ Support
+
+If you enjoy using **exp-gen**, consider giving the repository a ⭐ on GitHub.
+
+It helps the project grow and supports future development.
+
+**Repository: [exp-gen](https://github.com/Open-Core-Lab/exp-gen)**
+
+---
+
+# 📄 License
 
 This project is licensed under the **[MIT License](https://github.com/Open-Core-Lab/exp-gen/blob/main/LICENSE)**.
 
----
+**Happy coding! 🚀** 
 
-**Happy coding! 🚀** _Maintained by [Madhusha Prasad](https://github.com/MadhushaPrasad)_
+_Maintained with ❤️ by [Madhusha Prasad](https://github.com/MadhushaPrasad)_
