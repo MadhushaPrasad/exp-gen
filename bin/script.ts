@@ -8,6 +8,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 import type { ProjectConfig } from "./type/projectConfig.js";
 import scaffoldProject from "./scaffoldProject.js";
+import { runRegexSimulator } from "./regexSimulator.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -55,6 +56,23 @@ async function main() {
       "Scaffold your Express API in seconds 🚀"
     )}`
   );
+
+  // choose scaffold or regex simulator
+  const action = await safePrompt(
+    p.select({
+      message: "What would you like to do?\n",
+      options: [
+        { value: "scaffold", label: "🚀 Scaffold a new Express API" },
+        { value: "regex", label: "🔬 Run Regex Simulator" },
+      ],
+    })
+  );
+
+  // check user input
+  if (action === "regex") {
+    await runRegexSimulator();
+    process.exit(0);
+  }
 
   const project = await p.group<ProjectConfig>(
     {
