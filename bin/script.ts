@@ -60,7 +60,7 @@ async function main() {
   // choose scaffold or regex simulator
   const action = await safePrompt(
     p.select({
-      message: "What would you like to do?",
+      message: "What would you like to do?\n",
       options: [
         { value: "scaffold", label: "🚀 Scaffold a new Express API" },
         { value: "regex", label: "🔬 Run Regex Simulator" },
