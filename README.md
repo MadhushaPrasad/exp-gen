@@ -80,22 +80,22 @@ The CLI will ask for:
 
 Supported languages
 
-- **TypeScript** *(Recommended for type safety)* – Currently available with **MongoDB (Mongoose)** and **No Database** templates. More database integrations will be added in future releases.
+- **TypeScript** _(Recommended for type safety)_ – Currently available with **MongoDB (Mongoose)** and **No Database** templates. More database integrations will be added in future releases.
 - **JavaScript** – Full template support for all currently available databases, including **MongoDB (Mongoose)**, **MySQL (mysql2)**, **SQLite (sqlite3)**, **PostgreSQL (pg)**, and **No Database**.
 
 ## 🗄️ Supported Databases
 
 | Database            | JavaScript | TypeScript | Driver / ORM | Status  |
 | ------------------- | :--------: | :--------: | ------------ | :-----: |
-| MongoDB             |     ✅      |     ✅      | Mongoose     | Stable  |
-| MySQL               |     ✅      |     ❌      | mysql2       | Stable  |
-| SQLite              |     ✅      |     ❌      | sqlite3      | Stable  |
-| PostgreSQL          |     ✅      |     ❌      | pg           | Stable  |
-| None (No Database)  |     ✅      |     ✅      | —            | Stable  |
-| Prisma (MongoDB)    |     🚧      |     🚧      | Prisma ORM   | Planned |
-| Prisma (MySQL)      |     🚧      |     🚧      | Prisma ORM   | Planned |
-| Prisma (PostgreSQL) |     🚧      |     🚧      | Prisma ORM   | Planned |
-| Prisma (SQLite)     |     🚧      |     🚧      | Prisma ORM   | Planned |
+| MongoDB             |     ✅     |     ✅     | Mongoose     | Stable  |
+| MySQL               |     ✅     |     ❌     | mysql2       | Stable  |
+| SQLite              |     ✅     |     ❌     | sqlite3      | Stable  |
+| PostgreSQL          |     ✅     |     ❌     | pg           | Stable  |
+| None (No Database)  |     ✅     |     ✅     | —            | Stable  |
+| Prisma (MongoDB)    |     🚧     |     🚧     | Prisma ORM   | Planned |
+| Prisma (MySQL)      |     🚧     |     🚧     | Prisma ORM   | Planned |
+| Prisma (PostgreSQL) |     🚧     |     🚧     | Prisma ORM   | Planned |
+| Prisma (SQLite)     |     🚧     |     🚧     | Prisma ORM   | Planned |
 
 #### Preview
 
@@ -308,6 +308,6 @@ It helps the project grow and supports future development.
 
 This project is licensed under the **[MIT License](https://github.com/Open-Core-Lab/exp-gen/blob/main/LICENSE)**.
 
-**Happy coding! 🚀** 
+**Happy coding! 🚀**
 
 _Maintained with ❤️ by [Madhusha Prasad](https://github.com/MadhushaPrasad)_
